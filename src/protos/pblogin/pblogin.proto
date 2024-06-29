@@ -1,0 +1,23 @@
+/*
+Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+*/
+syntax = "proto3";
+
+package pblogin;
+
+option go_package = "auth/proto/pblogin";
+
+import "pbcommon/pbcommon.proto";
+
+
+message AdminLoginArgs{
+  int64 appId = 1;
+  string username = 2;
+  string password = 3;
+}
+
+
+
+service Login {
+  rpc AdminLogin(AdminLoginArgs) returns(pbcommon.CommonResult){}
+}

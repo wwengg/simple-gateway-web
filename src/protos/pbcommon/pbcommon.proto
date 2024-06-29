@@ -1,0 +1,58 @@
+/*
+Copyright © 2024 wwengg info@wwengg.cn
+*/
+syntax = "proto3";
+
+package pbcommon;
+
+option go_package = "auth/proto/pbcommon";
+
+enum EnumCode {
+  None = 0;
+  Success = 200; // 操作成功
+  Fail = 500; // 操作失败
+  Unknown = 501; // 未知错误
+  Internal = 502; // 内部错误
+  Invalid = 503; // 无效数据
+  InvalidParam = 504; // 无效参数
+  ParamError = 505; // 参数错误
+
+  FindError = 1001; // 查询失败
+  CreateError = 1002; // 创建失败
+  DeleteError = 1003; // 删除失败
+  UpdateError = 1004; // 更新失败
+
+
+  // auth
+  InvalidToken = 2002; // 无效token
+  InvalidSign = 2003; // 无效签名
+  NotLogin = 2004; // 未登录
+  LoginTimeout = 2005; // 登录超时
+  LoginError = 2006; // 登录失败
+  LoginForbidden = 2007; // 登录禁止
+  LoginExpired = 2008; // 登录过期
+  LoginInvalid = 2009; // 登录无效
+  LoginInvalidPassword = 2010; // 登录密码错误
+  LoginInvalidUsername = 2011; // 登录用户名错误
+  LoginInvalidEmail = 2012; // 登录邮箱错误
+  LoginInvalidPhone = 2013; // 登录手机号错误
+  LoginInvalidUsernameOrEmail = 2014; // 登录用户名或邮箱错误
+  // auth end
+}
+
+message CommonResult{
+  EnumCode code = 1;
+  string msg = 2;
+}
+
+message IdArgs {
+  int64 id = 1;
+  string idStr = 2;
+  repeated int64 ids = 3;
+  repeated string idStrs = 4;
+}
+
+message PageInfo{
+  int32 page = 1;
+  int32 pageSize = 2;
+}
